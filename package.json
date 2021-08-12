@@ -1,0 +1,45 @@
+{
+  "name": "mikl",
+  "version": "0.0.1",
+  "description": "mikl.io",
+  "keywords": [
+    "mikl"
+  ],
+  "homepage": "https://github.com/chiefmikey/mikl#readme",
+  "bugs": {
+    "url": "https://github.com/chiefmikey/mikl/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chiefmikey/mikl.git"
+  },
+  "license": "ISC",
+  "author": "Mikl Wolfe <wolfe@mikl.io> (https://mikl.io)",
+  "contributors": [
+    "Mikl Wolfe <wolfe@mikl.io> (https://mikl.io)"
+  ],
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "nodemon app.js",
+    "build": "webpack --mode development",
+    "dev": "webpack --mode development -w"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-compat": "^3.11.1",
+    "eslint-plugin-css-modules": "^2.11.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-json": "^3.1.0",
+    "eslint-plugin-json-format": "^2.0.1",
+    "eslint-plugin-md": "^1.0.19",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-sonar": "^0.6.1",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^22.0.0",
+    "stylelint-order": "^4.1.0"
+  }
+}
