@@ -1,0 +1,59 @@
+services:
+  the-myspace:
+    image: chiefmikey/the-myspace:latest
+    depends_on:
+      name-generator:
+        condition: service_healthy
+    env_file:
+      - .env
+    networks:
+      - mikl-net
+    ports:
+      - '80:8080'
+
+  cloudyman:
+    image: chiefmikey/cloudyman:latest
+    depends_on:
+      the-myspace:
+        condition: service_healthy
+    env_file:
+      - .env
+    networks:
+      - mikl-net
+    ports:
+      - '3002:3002'
+
+  name-generator:
+    image: chiefmikey/name-generator:latest
+    depends_on:
+      name-generator_db:
+        condition: service_healthy
+    env_file:
+      - .env
+    networks:
+      - mikl-net
+    ports:
+      - '3001:3001'
+
+  name-generator_db:
+    image: cassandra:latest
+    depends_on:
+      the-myspace:
+        condition: service_healthy
+    networks:
+      - mikl-net
+    ports:
+      - '9042:9042'
+    volumes:
+      - cassandra-data:/var/lib/cassandra
+    healthcheck:
+      test: cqlsh --debug
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  cassandra-data:
+
+networks:
+  mikl-net:
