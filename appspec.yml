@@ -4,8 +4,8 @@ files:
  - source: .
    destination: /home/ec2-user/mikl
 hooks:
-  ApplicationStop:
-  - location: stop.sh
+  # ApplicationStop:
+  # - location: stop.sh
   AfterInstall:
    - location: init.sh
      timeout: 300
