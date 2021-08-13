@@ -11,6 +11,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Set secrets
         run: |
+          docker swarm init
           echo "${{ secrets.ANIMAL_KEY }}" | docker secret create ANIMAL_KEY -
           echo "${{ secrets.ANIMAL_SECRET }}" | docker secret create ANIMAL_SECRET -
           echo "${{ secrets.WEATHER }}" | docker secret create WEATHER -
