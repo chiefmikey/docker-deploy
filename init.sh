@@ -1,3 +1,3 @@
 #!/bin/sh
 
-docker-compose up -d
+docker-compose -f ~/mikl/docker-compose.yaml up -d
