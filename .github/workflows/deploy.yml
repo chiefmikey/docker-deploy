@@ -22,23 +22,17 @@ jobs:
     # needs: [continuous-integration]
     if: github.ref == 'refs/heads/main'
     steps:
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        # aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }} # if you have/need it
-          aws-region: us-east-2
       - name: Create CodeDeploy Deployment
         id: deploy
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: us-east-1
-          AWS_DEFAULT_OUTPUT: json
         run: |
-          aws deploy create-deployment \
+          aws configure --profile mikl
+            AWS Access Key ID [None]: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            AWS Secret Access Key [None]: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            Default region name [None]: us-east-1
+            Default output format [None]: json
+        run: |
+          aws deploy create-deployment --profile mikl \
             --application-name mikl \
-            --deployment-group-name AppDeploymentGroupName \
+            --deployment-group-name mikld \
             --deployment-config-name CodeDeployDefault.OneAtATime \
             --github-location repository=${{ github.repository }},commitId=${{ github.sha }}
