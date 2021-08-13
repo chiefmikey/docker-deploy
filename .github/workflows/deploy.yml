@@ -30,8 +30,7 @@ jobs:
             AWS Secret Access Key [None]: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
             Default region name [None]: us-east-1
             Default output format [None]: json
-        run: |
-          aws deploy create-deployment --profile mikl \
+          && aws deploy create-deployment --profile mikl \
             --application-name mikl \
             --deployment-group-name mikld \
             --deployment-config-name CodeDeployDefault.OneAtATime \
