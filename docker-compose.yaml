@@ -34,6 +34,11 @@ services:
       - mikl-net
     ports:
       - '3001:3001'
+    healthcheck:
+      test: node hc.js
+      interval: 10s
+      timeout: 10s
+      retries: 10
 
   name-generator_db:
     image: cassandra:latest
