@@ -41,4 +41,4 @@ jobs:
             --application-name mikl \
             --deployment-group-name mikld \
             --deployment-config-name CodeDeployDefault.OneAtATime \
-            --github-location repository=${{ github.repository }}
+            --github-location repository=${{ github.repository }},commitId=${{ github.sha }}
