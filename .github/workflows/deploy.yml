@@ -2,6 +2,10 @@ name: CI/CD Pipeline
 on:
   push:
     branches: [ main ]
+env:
+  ANIMAL_KEY: ${{ secrets.ANIMAL_KEY }}
+  ANIMAL_SECRET: ${{ secrets.ANIMAL_SECRET }}
+  WEATHER: ${{ secrets.WEATHER }}
 jobs:
   # continuous-integration:
       # environment:
@@ -42,7 +46,3 @@ jobs:
             --deployment-group-name mikld \
             --deployment-config-name CodeDeployDefault.OneAtATime \
             --github-location repository=${{ github.repository }},commitId=${{ github.sha }}
-        env:
-          ANIMAL_KEY: ${{ secrets.ANIMAL_KEY }}
-          ANIMAL_SECRET: ${{ secrets.ANIMAL_SECRET }}
-          WEATHER: ${{ secrets.WEATHER }}
