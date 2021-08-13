@@ -6,10 +6,6 @@ on:
 jobs:
   continuous-integration:
     runs-on: ubuntu-latest
-    env:
-      ANIMAL_KEY: ${{ secrets.ANIMAL_KEY }}
-      ANIMAL_SECRET: ${{ secrets.ANIMAL_SECRET }}
-      WEATHER: ${{ secrets.WEATHER }}
     steps:
       - uses: actions/checkout@v2
       - name: Configure AWS credentials
@@ -20,7 +16,10 @@ jobs:
           aws-region: us-east-2
       - name: Build Application and Run unit Test
         run: docker compose up -d
-
+        env:
+          ANIMAL_KEY: ${{ secrets.ANIMAL_KEY }}
+          ANIMAL_SECRET: ${{ secrets.ANIMAL_SECRET }}
+          WEATHER: ${{ secrets.WEATHER }}
   continuous-deployment:
     runs-on: ubuntu-latest
     needs: [continuous-integration]
