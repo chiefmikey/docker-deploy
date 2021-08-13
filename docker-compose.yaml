@@ -9,6 +9,11 @@ services:
       - ANIMAL_KEY: /run/secrets/ANIMAL_KEY
       - ANIMAL_SECRET: /run/secrets/ANIMAL_SECRET
       - WEATHER: /run/secrets/WEATHER
+      - NODE_ENV: production
+    secrets:
+      - ANIMAL_KEY
+      - ANIMAL_SECRET
+      - WEATHER
     healthcheck:
       test: node hc.js
       interval: 10s
