@@ -5,7 +5,6 @@ files:
    destination: /home/ec2-user/app
 hooks:
   AfterInstall:
-   - location: scripts/install_app_dependencies
+   - location: init.sh
      timeout: 300
-     runas: root
-
+     runas: ec2-user
