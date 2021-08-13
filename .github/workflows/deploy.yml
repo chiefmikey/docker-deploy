@@ -37,7 +37,7 @@ jobs:
       - name: Create CodeDeploy Deployment
         id: deploy
         run: |
-          aws deploy create-deployment \
+          aws deploy create-deployment --ignore-application-stop-failures \
             --application-name mikl \
             --deployment-group-name mikld \
             --deployment-config-name CodeDeployDefault.OneAtATime \
