@@ -2,11 +2,6 @@ name: CI/CD Pipeline
 on:
   push:
     branches: [ main ]
-env:
-  ANIMAL_KEY: ${{ secrets.ANIMAL_KEY }}
-  ANIMAL_SECRET: ${{ secrets.ANIMAL_SECRET }}
-  WEATHER: ${{ secrets.WEATHER }}
-  NODE_ENV: production
 jobs:
   continuous-integration:
     environment:
@@ -16,11 +11,10 @@ jobs:
       - uses: actions/checkout@v2
       - name: Set secrets
         run: |
-          docker secret create \
-            --label ANIMAL_KEY=${{ secrets.ANIMAL_KEY }} \
-            --label ANIMAL_SECRET=${{ secrets.ANIMAL_SECRET }} \
-            --label WEATHER=${{ secrets.WEATHER }} \
-            --label NODE_ENV=production
+          echo "${{ secrets.ANIMAL_KEY }}" | docker secret create ANIMAL_KEY -
+          echo "${{ secrets.ANIMAL_SECRET }}" | docker secret create ANIMAL_SECRET -
+          echo "${{ secrets.WEATHER }}" | docker secret create WEATHER -
+          echo "production" | docker secret create NODE_ENV -
       - name: Build Application
         run: docker-compose up -d
   continuous-deployment:
