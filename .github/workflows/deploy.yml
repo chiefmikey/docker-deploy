@@ -6,6 +6,7 @@ env:
   ANIMAL_KEY: ${{ secrets.ANIMAL_KEY }}
   ANIMAL_SECRET: ${{ secrets.ANIMAL_SECRET }}
   WEATHER: ${{ secrets.WEATHER }}
+  NODE_ENV: production
 jobs:
   # continuous-integration:
       # environment:
