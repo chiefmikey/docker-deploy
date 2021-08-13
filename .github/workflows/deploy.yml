@@ -17,7 +17,7 @@ jobs:
           echo "${{ secrets.WEATHER }}" | docker secret create WEATHER -
           echo "production" | docker secret create NODE_ENV -
       - name: Build Application
-        run: docker-compose up -d
+        run: docker stack deploy --compose-file=docker-compose.yml mikl
   continuous-deployment:
     environment:
       name: mikl
