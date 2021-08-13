@@ -22,7 +22,7 @@ jobs:
   continuous-deployment:
     environment:
       name: mikl
-      url: github.com
+      url: https://github.com
     runs-on: ubuntu-latest
     # needs: [continuous-integration]
     if: github.ref == 'refs/heads/main'
