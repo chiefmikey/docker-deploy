@@ -1,12 +1,14 @@
 services:
   the-myspace:
     image: chiefmikey/the-myspace:latest
-    env_file:
-      - .env
     networks:
       - mikl-net
     ports:
       - '80:8080'
+    environment:
+      - ANIMAL_KEY=${ANIMAL_KEY}
+      - ANIMAL_SECRET=${ANIMAL_SECRET}
+      - WEATHER=${WEATHER}
     healthcheck:
       test: node hc.js
       interval: 10s
@@ -18,8 +20,6 @@ services:
     depends_on:
       the-myspace:
         condition: service_healthy
-    env_file:
-      - .env
     networks:
       - mikl-net
     ports:
@@ -30,8 +30,6 @@ services:
     depends_on:
       name-generator_db:
         condition: service_healthy
-    env_file:
-      - .env
     networks:
       - mikl-net
     ports:
