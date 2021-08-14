@@ -55,8 +55,8 @@ services:
       - cassandra-data:/var/lib/cassandra
     healthcheck:
       test: cqlsh --debug
-      interval: 5s
-      timeout: 5s
+      interval: 10s
+      timeout: 10s
       retries: 10
 
 volumes:
