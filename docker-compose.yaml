@@ -6,15 +6,6 @@ services:
       - mikl-net
     ports:
       - '80:8080'
-    environment:
-      ANIMAL_KEY: /run/secrets/ANIMAL_KEY
-      ANIMAL_SECRET: /run/secrets/ANIMAL_SECRET
-      WEATHER: /run/secrets/WEATHER
-      NODE_ENV: production
-    secrets:
-      - ANIMAL_KEY
-      - ANIMAL_SECRET
-      - WEATHER
     healthcheck:
       test: node hc.js
       interval: 10s
@@ -65,11 +56,3 @@ volumes:
 
 networks:
   mikl-net:
-
-secrets:
-  ANIMAL_KEY:
-    external: true
-  ANIMAL_SECRET:
-    external: true
-  WEATHER:
-    external: true
