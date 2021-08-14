@@ -1,3 +1,3 @@
 #!/bin/sh
 
-docker-compose -f ~/mikl/docker-compose.yaml down --remove-orphans
+docker-compose down --remove-orphans
