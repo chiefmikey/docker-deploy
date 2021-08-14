@@ -4,9 +4,9 @@ files:
  - source: .
    destination: /home/ec2-user/mikl
 hooks:
-  BeforeInstall:
-  - location: stop.sh
   AfterInstall:
+  - location: stop.sh
+  ApplicationStart:
    - location: init.sh
      timeout: 300
      runas: ec2-user
