@@ -15,16 +15,23 @@ services:
   cloudyman:
     image: chiefmikey/cloudyman:latest
     depends_on:
-      - the-myspace
+      name-generator:
+        condition: service_healthy
     networks:
       - mikl-net
     ports:
       - '3002:3002'
+    healthcheck:
+      test: node hc.js
+      interval: 10s
+      timeout: 10s
+      retries: 10
 
   name-generator:
     image: chiefmikey/name-generator:latest
     depends_on:
-      - name-generator_db
+      name-generator_db:
+        condition: service_healthy
     networks:
       - mikl-net
     ports:
@@ -38,7 +45,8 @@ services:
   name-generator_db:
     image: cassandra:latest
     depends_on:
-      - the-myspace
+      the-myspace:
+        condition: service_healthy
     networks:
       - mikl-net
     ports:
