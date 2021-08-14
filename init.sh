@@ -1,3 +1,3 @@
 #!/bin/sh
 
-docker-compose -f ~/mikl/docker-compose.yaml up -d
+docker-compose -f /home/ec2-user/mikl/docker-compose.yaml up -d
