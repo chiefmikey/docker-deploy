@@ -4,7 +4,7 @@ files:
  - source: .
    destination: /home/ec2-user/mikl
 hooks:
-  AfterInstall:
+  ApplicationStop:
   - location: stop.sh
   ApplicationStart:
    - location: init.sh
