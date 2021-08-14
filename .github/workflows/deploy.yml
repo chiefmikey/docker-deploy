@@ -3,27 +3,20 @@ on:
   push:
     branches: [ main ]
 jobs:
-  continuous-integration:
-    environment:
-      name: mikl
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set secrets
-        run: |
-          docker swarm init
-          echo "${{ secrets.ANIMAL_KEY }}" | docker secret create ANIMAL_KEY -
-          echo "${{ secrets.ANIMAL_SECRET }}" | docker secret create ANIMAL_SECRET -
-          echo "${{ secrets.WEATHER }}" | docker secret create WEATHER -
-          echo "production" | docker secret create NODE_ENV -
-      - name: Build Application
-        run: docker stack deploy --compose-file=docker-compose.yaml mikl
+  # continuous-integration:
+  #   environment:
+  #     name: mikl
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Build Application
+  #       run: docker-compose up -d
   continuous-deployment:
     environment:
       name: mikl
       url: https://github.com
     runs-on: ubuntu-latest
-    needs: [continuous-integration]
+    # needs: [continuous-integration]
     if: github.ref == 'refs/heads/main'
     steps:
       - name: Configure AWS Credentials
