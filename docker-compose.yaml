@@ -15,8 +15,8 @@ services:
   cloudyman:
     image: chiefmikey/cloudyman:latest
     depends_on:
-      name-generator:
-        condition: service_healthy
+      - name-generator_db
+        # condition: service_healthy
     networks:
       - mikl-net
     ports:
@@ -30,8 +30,8 @@ services:
   name-generator:
     image: chiefmikey/name-generator:latest
     depends_on:
-      name-generator_db:
-        condition: service_healthy
+      - cloudyman
+        # condition: service_healthy
     networks:
       - mikl-net
     ports:
@@ -53,11 +53,11 @@ services:
       - '9042:9042'
     volumes:
       - cassandra-data:/var/lib/cassandra
-    healthcheck:
-      test: ['CMD-SHELL', 'hc']
-      interval: 10s
-      timeout: 5s
-      retries: 5
+    # healthcheck:
+    #   test: ['CMD-SHELL', 'hc']
+    #   interval: 10s
+    #   timeout: 5s
+    #   retries: 5
 
 volumes:
   cassandra-data:
