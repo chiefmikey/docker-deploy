@@ -45,8 +45,7 @@ services:
   name-generator_db:
     image: cassandra:latest
     depends_on:
-      the-myspace:
-        condition: service_healthy
+      - the-myspace
     networks:
       - mikl-net
     ports:
