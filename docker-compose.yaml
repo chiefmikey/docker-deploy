@@ -6,11 +6,11 @@ services:
       - mikl-net
     ports:
       - '80:8080'
-    healthcheck:
-      test: node hc.js
-      interval: 10s
-      timeout: 10s
-      retries: 10
+    # healthcheck:
+    #   test: node hc.js
+    #   interval: 10s
+    #   timeout: 10s
+    #   retries: 10
 
   cloudyman:
     image: chiefmikey/cloudyman:latest
