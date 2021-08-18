@@ -33,5 +33,5 @@ jobs:
             --application-name mikl \
             --deployment-group-name mikld \
             --deployment-config-name CodeDeployDefault.OneAtATime \
-            --file-exists-behavior OVERWRITE
+            --file-exists-behavior OVERWRITE \
             --github-location repository=${{ github.repository }},commitId=${{ github.sha }}
