@@ -34,8 +34,6 @@ services:
     depends_on:
       name-generator_db:
         condition: service_healthy
-    env_file:
-      - .env
     networks:
       - mikl-net
     ports:
