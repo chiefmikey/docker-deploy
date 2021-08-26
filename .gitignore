@@ -1,7 +1,3 @@
-# Bundler
-bundle.js
-build.js
-
 # DS_Store files
 .DS_Store
 
@@ -118,3 +114,14 @@ dist
 
 #VS Code Counter directory
 .VSCodeCounter
+
+# Bundler
+bundle.js
+build.js
+build.js.map
+
+# Map files
+*.map
+
+# Rollup
+rollup-cache.json
