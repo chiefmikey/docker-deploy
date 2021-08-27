@@ -3,7 +3,7 @@
 <table>
 <thead>
 <tr>
-  <th halign="left">Monorepo for deploying personal applications</th>
+  <th align="left">Monorepo for deploying personal applications</th>
 </tr>
 </thead>
 <tbody>
