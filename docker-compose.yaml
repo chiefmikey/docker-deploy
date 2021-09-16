@@ -46,7 +46,7 @@ services:
 
   name-generator_db:
     container_name: name-generator_db
-    image: chiefmikey/cassandra:latest
+    image: chiefmikey/alpine-cassandra:latest
     depends_on:
       the-myspace:
         condition: service_healthy
