@@ -5,13 +5,13 @@
   "keywords": [
     "mikl"
   ],
-  "homepage": "https://github.com/chiefmikey/mikl#readme",
+  "homepage": "https://github.com/chiefmikey/mikl.io#readme",
   "bugs": {
-    "url": "https://github.com/chiefmikey/mikl/issues"
+    "url": "https://github.com/chiefmikey/mikl.io/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chiefmikey/mikl.git"
+    "url": "git+https://github.com/chiefmikey/mikl.io.git"
   },
   "license": "MIT",
   "author": "Mikl Wolfe <wolfe@mikl.io> (https://mikl.io)",
