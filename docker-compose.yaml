@@ -22,7 +22,7 @@ services:
       timeout: 10s
       retries: 10
     environment:
-    - "VIRTUAL_HOST=themyspace.org,www.themyspace.org"
+    - VIRTUAL_HOST=themyspace.org,www.themyspace.org
 
   tommyman:
     container_name: tommyman
@@ -40,7 +40,7 @@ services:
       timeout: 10s
       retries: 10
     environment:
-      - "VIRTUAL_HOST=hullowurld.com,www.hullowurld.com,tommyman.itsacloudynight.com"
+      - VIRTUAL_HOST=hullowurld.com,www.hullowurld.com,tommyman.itsacloudynight.com
 
   cloudyman:
     container_name: cloudyman
@@ -58,7 +58,7 @@ services:
       timeout: 10s
       retries: 10
     environment:
-    - "VIRTUAL_HOST=itsacloudynight.com,www.itsacloudynight.com,cloudyman.itsacloudynight.com"
+    - VIRTUAL_HOST=itsacloudynight.com,www.itsacloudynight.com,cloudyman.itsacloudynight.com
 
   name-generator_client:
     container_name: name-generator_client
@@ -76,7 +76,7 @@ services:
       timeout: 10s
       retries: 10
   environment:
-  - "VIRTUAL_HOST=name.themyspace.org,www.name.themyspace.org"
+  - VIRTUAL_HOST=name.themyspace.org,www.name.themyspace.org
 
   name-generator_db:
     container_name: name-generator_db
