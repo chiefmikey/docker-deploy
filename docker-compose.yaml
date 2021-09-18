@@ -7,15 +7,15 @@ services:
     ports:
       - 80:80
     volumes:
-      - /var/run/docker.sock:/tmp/docker.sock
+      - /var/run/docker.sock:/tmp/docker.sock:ro
 
   the-myspace:
     container_name: the-myspace
     image: chiefmikey/the-myspace:latest
     networks:
       - mikl-net
-    ports:
-      - 3000:3000
+    expose:
+      - 3000
     healthcheck:
       test: node healthcheck.js
       interval: 10s
@@ -32,8 +32,8 @@ services:
         condition: service_healthy
     networks:
       - mikl-net
-    ports:
-      - 3003:3003
+    expose:
+      - 3003
     healthcheck:
       test: node healthcheck.js
       interval: 10s
@@ -50,8 +50,8 @@ services:
         condition: service_healthy
     networks:
       - mikl-net
-    ports:
-      - 3002:3002
+    expose:
+      - 3002
     healthcheck:
       test: node healthcheck.js
       interval: 10s
@@ -68,8 +68,8 @@ services:
         condition: service_healthy
     networks:
       - mikl-net
-    ports:
-      - 3001:3001
+    expose:
+      - 3001
     healthcheck:
       test: node healthcheck.js
       interval: 10s
