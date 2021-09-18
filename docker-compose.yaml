@@ -74,7 +74,7 @@ services:
       timeout: 10s
       retries: 10
   environment:
-  - "VIRTUAL_HOST=name.mikl.io,www.name.mikl.io"
+  - "VIRTUAL_HOST=name.themyspace.org,www.name.themyspace.org"
 
   name-generator_db:
     container_name: name-generator_db
