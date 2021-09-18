@@ -2,8 +2,10 @@ services:
   proxy:
     container_name: proxy
     image: jwilder/nginx-proxy
+    networks:
+      - mikl-net
     ports:
-      - "80:80"
+      - 80:80
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock
 
