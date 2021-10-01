@@ -1,12 +1,25 @@
 #!/bin/sh
 
-if [ "$(cat /home/ec2-user/mikl/stop.txt)" = stop ]; then
-  docker-compose -f /home/ec2-user/mikl/docker-compose.yaml down --remove-orphans
+INSTANCE_ALREADY_STARTED="INSTANCE_ALREADY_STARTED_PLACEHOLDER"
+if [ ! -e $INSTANCE_ALREADY_STARTED ]; then
+touch $INSTANCE_ALREADY_STARTED
+  echo "-- First instance startup --"
+  sudo yum update -y
+  sudo amazon-linux-extras install docker
+  sudo service docker start
+  sudo usermod -a -G docker ec2-user
+  sudo chkconfig docker on
+  sudo yum install -y git
+  sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+  sudo chmod +x /usr/local/bin/docker-compose
+  echo $(docker-compose version)
+  sudo reboot
+else
+  echo "-- Not first instance startup --"
+  sudo yum update -y
+  if [ "$(cat /home/ec2-user/vscloud/stop.txt)" = stop ]; then
+    docker-compose -f /home/ec2-user/mikl/docker-compose.yaml down --remove-orphans
+  fi
+  docker-compose -f /home/ec2-user/mikl/docker-compose.yaml pull && \
+  docker-compose -f /home/ec2-user/mikl/docker-compose.yaml up -d
 fi
-
-sudo yum update -y
-
-sudo rm -rf /home/ec2-user/mikl/.github /home/ec2-user/mikl/.dockerignore /home/ec2-user/mikl/package.json
-
-docker-compose -f /home/ec2-user/mikl/docker-compose.yaml pull && \
-docker-compose -f /home/ec2-user/mikl/docker-compose.yaml up -d
