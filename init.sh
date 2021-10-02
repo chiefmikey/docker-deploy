@@ -14,7 +14,8 @@ touch $INSTANCE_ALREADY_STARTED
   sudo curl -SL https://github.com/docker/compose/releases/download/v2.0.0/docker-compose-linux-amd64 -o ~/.docker/cli-plugins/docker-compose
   sudo chmod +x ~/.docker/cli-plugins/docker-compose
   # sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
-  sudo reboot
+  docker-compose -f /home/ec2-user/mikl.io/docker-compose.yaml pull && \
+  docker-compose -f /home/ec2-user/mikl.io/docker-compose.yaml up -d
 else
   echo "-- Not first instance startup --"
   sudo yum update -y
