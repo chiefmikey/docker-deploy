@@ -11,7 +11,7 @@ touch $INSTANCE_ALREADY_STARTED
   sudo chkconfig docker on
   sudo yum install -y git
   sudo mkdir -p ~/.docker/cli-plugins/
-  sudo curl -SL https://github.com/docker/compose/releases/download/v2.0.1/docker-compose-linux-amd64 -o ~/.docker/cli-plugins/docker-compose
+  sudo curl -SL https://github.com/docker/compose/releases/download/v2.0.0/docker-compose-linux-amd64 -o ~/.docker/cli-plugins/docker-compose
   sudo chmod +x ~/.docker/cli-plugins/docker-compose
   sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
   echo $(docker-compose version)
