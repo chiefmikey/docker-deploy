@@ -80,23 +80,42 @@ services:
 
   name-generator_db:
     container_name: name-generator_db
-    image: chiefmikey/alpine-cassandra:latest
-    depends_on:
-      the-myspace:
-        condition: service_healthy
+    image: mongo
     networks:
       - mikl-net
     volumes:
-      - cassandra-data:/var/lib/cassandra
+      - mongo-data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=namegenerator
+    ports:
+      - 27017:27017
     healthcheck:
       test:
-        cd /opt/cassandra && su -s /bin/bash -c 'bin/cqlsh --debug' cassandra
+        echo 'db.runCommand("ping").ok' | mongo localhost:27017/namegenerator --quiet
       interval: 10s
       timeout: 10s
       retries: 10
 
+  # name-generator_db:
+  #   container_name: name-generator_db
+  #   image: chiefmikey/alpine-cassandra:latest
+  #   depends_on:
+  #     the-myspace:
+  #       condition: service_healthy
+  #   networks:
+  #     - mikl-net
+  #   volumes:
+  #     - cassandra-data:/var/lib/cassandra
+  #   healthcheck:
+  #     test:
+  #       cd /opt/cassandra && su -s /bin/bash -c 'bin/cqlsh --debug' cassandra
+  #     interval: 10s
+  #     timeout: 10s
+  #     retries: 10
+
 volumes:
-  cassandra-data:
+  mongo-data:
+  # cassandra-data:
 
 networks:
   mikl-net:

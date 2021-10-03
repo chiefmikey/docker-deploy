@@ -16,7 +16,7 @@ touch /home/ec2-user/$INSTANCE_ALREADY_STARTED
   sudo chmod +x /home/ec2-user/.docker/cli-plugins/docker-compose
   # sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
   docker compose -f /home/ec2-user/mikl.io/docker-compose.yaml pull
-  sudo nohup docker compose -f /home/ec2-user/mikl.io/docker-compose.yaml up -d &
+  docker compose -f /home/ec2-user/mikl.io/docker-compose.yaml up -d
 else
   echo "-- Not first instance startup --"
   sudo yum update -y
@@ -24,5 +24,5 @@ else
     docker compose -f /home/ec2-user/mikl.io/docker-compose.yaml down --remove-orphans
   fi
   docker compose -f /home/ec2-user/mikl.io/docker-compose.yaml pull
-  sudo nohup docker compose -f /home/ec2-user/mikl.io/docker-compose.yaml up -d &
+  docker compose -f /home/ec2-user/mikl.io/docker-compose.yaml up -d
 fi
