@@ -8,6 +8,8 @@ touch /home/ec2-user/$INSTANCE_ALREADY_STARTED
   sudo amazon-linux-extras install docker
   sudo service docker start
   sudo usermod -a -G docker ec2-user
+  sudo chkconfig docker on
+  echo $(docker info)
   sudo yum install -y git
   sudo yum install -y wget
   sudo mkdir -p /home/ec2-user/.docker/cli-plugins/
@@ -19,7 +21,6 @@ touch /home/ec2-user/$INSTANCE_ALREADY_STARTED
 else
   echo "-- Not first instance startup --"
   sudo yum update -y
-  sudo service docker start
   if [ "$(cat /home/ec2-user/mikl.io/stop.txt)" = stop ]; then
     docker compose -f /home/ec2-user/mikl.io/docker-compose.yaml down --remove-orphans
   fi
