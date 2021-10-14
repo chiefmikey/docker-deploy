@@ -24,6 +24,24 @@ services:
     environment:
       - VIRTUAL_HOST=themyspace.org,www.themyspace.org
 
+ profile-language:
+    container_name: profile-language
+    image: chiefmikey/profile-language:latest
+    depends_on:
+      the-myspace:
+        condition: service_healthy
+    networks:
+      - mikl-net
+    expose:
+      - "3004"
+    healthcheck:
+      test: node healthcheck.js
+      interval: 10s
+      timeout: 10s
+      retries: 10
+    environment:
+      - VIRTUAL_HOST=hullowurld.com,www.hullowurld.com
+
   tommyman:
     container_name: tommyman
     image: chiefmikey/tommyman:latest
@@ -40,7 +58,7 @@ services:
       timeout: 10s
       retries: 10
     environment:
-      - VIRTUAL_HOST=hullowurld.com,www.hullowurld.com,tommyman.itsacloudynight.com
+      - VIRTUAL_HOST=tommyman.itsacloudynight.com
 
   cloudyman:
     container_name: cloudyman
@@ -108,7 +126,7 @@ services:
   #     - cassandra-data:/var/lib/cassandra
   #   healthcheck:
   #     test:
-  #       cd /opt/cassandra && su -s /bin/bash -c 'bin/cqlsh --debug' cassandra
+  #       su -s /opt/cassandra/bin/bash -c 'bin/cqlsh --debug' cassandra
   #     interval: 10s
   #     timeout: 10s
   #     retries: 10
