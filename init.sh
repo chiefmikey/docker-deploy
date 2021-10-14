@@ -23,10 +23,6 @@ touch /home/ec2-user/$INSTANCE_ALREADY_STARTED
 else
   echo "-- Not first instance startup --"
   sudo yum update -y
-  sudo systemctl start docker
-  sudo systemctl status docker
-  sudo systemctl enable docker
-  sudo chkconfig docker on
   if [ "$(cat /home/ec2-user/mikl.io/stop.txt)" = stop ]; then
     docker compose -f /home/ec2-user/mikl.io/docker-compose.yaml down --remove-orphans
   fi

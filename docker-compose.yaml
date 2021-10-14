@@ -24,7 +24,7 @@ services:
     environment:
       - VIRTUAL_HOST=themyspace.org,www.themyspace.org
 
- profile-language:
+  profile-language:
     container_name: profile-language
     image: chiefmikey/profile-language:latest
     depends_on:
