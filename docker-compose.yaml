@@ -24,11 +24,11 @@ services:
     environment:
       - VIRTUAL_HOST=themyspace.org,www.themyspace.org
 
-  profile-language:
-    container_name: profile-language
-    image: chiefmikey/profile-language:latest
+  profile-languages:
+    container_name: profile-languages
+    image: chiefmikey/profile-languages:latest
     depends_on:
-      the-myspace:
+      tommyman:
         condition: service_healthy
     networks:
       - mikl-net
