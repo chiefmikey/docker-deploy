@@ -24,9 +24,9 @@ services:
     environment:
       - VIRTUAL_HOST=themyspace.org,www.themyspace.org
 
-  github-languages:
-    container_name: github-languages
-    image: chiefmikey/github-languages:latest
+  gitlang:
+    container_name: gitlang
+    image: chiefmikey/gitlang:latest
     depends_on:
       tommyman:
         condition: service_healthy
@@ -40,7 +40,7 @@ services:
       timeout: 10s
       retries: 10
     environment:
-      - VIRTUAL_HOST=hullowurld.com,www.hullowurld.com
+      - VIRTUAL_HOST=gitlang.net,www.gitlang.net
 
   tommyman:
     container_name: tommyman
