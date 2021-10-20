@@ -24,9 +24,9 @@ services:
     environment:
       - VIRTUAL_HOST=themyspace.org,www.themyspace.org
 
-  profile-languages:
-    container_name: profile-languages
-    image: chiefmikey/profile-languages:latest
+  github-languages:
+    container_name: github-languages
+    image: chiefmikey/github-languages:latest
     depends_on:
       tommyman:
         condition: service_healthy
