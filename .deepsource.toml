@@ -1,0 +1,15 @@
+version = 1
+
+exclude_patterns = [
+  "dist",
+  "bundle.js",
+  "build.js"
+]
+
+[[analyzers]]
+name = "docker"
+enabled = true
+
+[[analyzers]]
+name = "shell"
+enabled = true
