@@ -103,8 +103,7 @@ services:
     container_name: name-generator_db
     image: mongo
     depends_on:
-      proxy:
-        condition: service_healthy
+      - "proxy"
     networks:
       - mikl-net
     volumes:
