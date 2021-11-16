@@ -8,10 +8,9 @@ touch /home/ec2-user/$INSTANCE_ALREADY_STARTED
   sudo yum install -y git
   sudo yum install -y wget
   sudo mkdir -p /home/ec2-user/.docker/cli-plugins/
-  sudo curl -L "https://github.com/docker/compose/releases/download/2.1.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  sudo wget -O /home/ec2-user/.docker/cli-plugins/docker-compose https://github.com/docker/compose/releases/download/v2.1.1/docker-compose-linux-x86_64
   sudo chmod +x /home/ec2-user/.docker/cli-plugins/docker-compose
-  sudo chmod +x /usr/local/bin/docker-compose
-  sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+  sudo ln -s /home/ec2-user/.docker/cli-plugins/docker-compose /usr/bin/docker-compose
   sudo amazon-linux-extras install docker
   sudo usermod -aG docker ec2-user
   sudo su ec2-user
