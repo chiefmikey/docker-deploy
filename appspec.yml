@@ -7,8 +7,8 @@ hooks:
   ApplicationStop:
    - location: stop.sh
      timeout: 300
-     runas: root
+     runas: ec2-user
   ApplicationStart:
    - location: init.sh
      timeout: 300
-     runas: root
+     runas: ec2-user
