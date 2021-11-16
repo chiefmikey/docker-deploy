@@ -11,7 +11,7 @@ touch /home/ec2-user/$INSTANCE_ALREADY_STARTED
   wget -O /home/ec2-user/.docker/cli-plugins/docker-compose https://github.com/docker/compose/releases/download/v2.1.1/docker-compose-linux-x86_64
   sudo chmod +x /home/ec2-user/.docker/cli-plugins/docker-compose
   sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
-  amazon-linux-extras install docker
+  sudo amazon-linux-extras install docker
   sudo groupadd docker
   sudo usermod -aG docker ec2-user
   sudo su -s ec2-user
@@ -19,7 +19,6 @@ touch /home/ec2-user/$INSTANCE_ALREADY_STARTED
   sudo systemctl status docker
   sudo systemctl enable docker
   sudo chkconfig docker on
-  docker version
   docker compose -f /home/ec2-user/mikl.io/docker-compose.yaml pull
   docker compose -f /home/ec2-user/mikl.io/docker-compose.yaml up -d
 else
