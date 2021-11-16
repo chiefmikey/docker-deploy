@@ -13,8 +13,7 @@ services:
     container_name: the-myspace
     image: chiefmikey/the-myspace:latest
     depends_on:
-      gitlang:
-        condition: service_healthy
+      - "proxy"
     networks:
       - mikl-net
     expose:
@@ -103,7 +102,8 @@ services:
     container_name: name-generator_db
     image: mongo
     depends_on:
-      - "proxy"
+      the-myspace:
+        condition: service_healthy
     networks:
       - mikl-net
     volumes:
