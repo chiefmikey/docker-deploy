@@ -12,9 +12,9 @@ touch /home/ec2-user/$INSTANCE_ALREADY_STARTED
   sudo chmod +x /home/ec2-user/.docker/cli-plugins/docker-compose
   sudo ln -s /home/ec2-user/.docker/cli-plugins/docker-compose /usr/bin/docker-compose
   sudo amazon-linux-extras install docker
-  sudo usermod -aG docker ec2-user
+  sudo usermod -a -G docker $USER
   sudo chmod 666 /var/run/docker.sock
-  sudo su ec2-user
+  sudo su $USER
   sudo systemctl enable --now docker
   sudo chkconfig docker on
   docker compose -f /home/ec2-user/mikl.io/docker-compose.yaml pull
