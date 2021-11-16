@@ -14,7 +14,7 @@ touch /home/ec2-user/$INSTANCE_ALREADY_STARTED
   sudo amazon-linux-extras install docker
   sudo groupadd docker
   sudo usermod -aG docker ec2-user
-  sudo su -s ec2-user
+  sudo su ec2-user
   sudo systemctl start docker
   sudo systemctl status docker
   sudo systemctl enable docker
