@@ -5,8 +5,10 @@ files:
    destination: /home/ec2-user/mikl.io
 hooks:
   ApplicationStop:
-  - location: stop.sh
+   - location: stop.sh
+     timeout: 300
+     runas: root
   ApplicationStart:
    - location: init.sh
      timeout: 300
-     runas: ec2-user
+     runas: root
