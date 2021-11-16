@@ -13,6 +13,7 @@ touch /home/ec2-user/$INSTANCE_ALREADY_STARTED
   sudo ln -s /home/ec2-user/.docker/cli-plugins/docker-compose /usr/bin/docker-compose
   sudo amazon-linux-extras install docker
   sudo usermod -aG docker ec2-user
+  sudo chmod 666 /var/run/docker.sock
   sudo su ec2-user
   sudo systemctl enable --now docker
   sudo chkconfig docker on
