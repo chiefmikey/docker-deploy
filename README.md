@@ -1,4 +1,5 @@
 # **Compose and Deploy**
 
-A template for automating deployment with Docker Compose on AWS
+Template for automated deployment of Docker Compose on an EC2 instance using GitHub Actions and AWS CodeDeploy
+
 
