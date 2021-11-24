@@ -26,59 +26,59 @@ services:
     environment:
       - VIRTUAL_HOST=themyspace.org,www.themyspace.org
 
-  # gitlang:
-  #   container_name: gitlang
-  #   image: chiefmikey/gitlang:latest
-  #   depends_on:
-  #     name-generator_client:
-  #       condition: service_healthy
-  #   networks:
-  #     - mikl-net
-  #   expose:
-  #     - "3004"
-  #   healthcheck:
-  #     test: node healthcheck.js
-  #     interval: 10s
-  #     timeout: 10s
-  #     retries: 10
-  #   environment:
-  #     - VIRTUAL_HOST=gitlang.net,www.gitlang.net
+  gitlang:
+    container_name: gitlang
+    image: chiefmikey/gitlang:latest
+    depends_on:
+      name-generator_client:
+        condition: service_healthy
+    networks:
+      - mikl-net
+    expose:
+      - "3004"
+    healthcheck:
+      test: node healthcheck.js
+      interval: 10s
+      timeout: 10s
+      retries: 10
+    environment:
+      - VIRTUAL_HOST=gitlang.net,www.gitlang.net
 
-  # tommyman:
-  #   container_name: tommyman
-  #   image: chiefmikey/tommyman:latest
-  #   depends_on:
-  #     the-myspace:
-  #       condition: service_healthy
-  #   networks:
-  #     - mikl-net
-  #   expose:
-  #     - "3003"
-  #   healthcheck:
-  #     test: node healthcheck.js
-  #     interval: 10s
-  #     timeout: 10s
-  #     retries: 10
-  #   environment:
-  #     - VIRTUAL_HOST=tommyman.itsacloudynight.com
+  tommyman:
+    container_name: tommyman
+    image: chiefmikey/tommyman:latest
+    depends_on:
+      the-myspace:
+        condition: service_healthy
+    networks:
+      - mikl-net
+    expose:
+      - "3003"
+    healthcheck:
+      test: node healthcheck.js
+      interval: 10s
+      timeout: 10s
+      retries: 10
+    environment:
+      - VIRTUAL_HOST=tommyman.itsacloudynight.com
 
-  # cloudyman:
-  #   container_name: cloudyman
-  #   image: chiefmikey/cloudyman:latest
-  #   depends_on:
-  #     the-myspace:
-  #       condition: service_healthy
-  #   networks:
-  #     - mikl-net
-  #   expose:
-  #     - "3002"
-  #   healthcheck:
-  #     test: node healthcheck.js
-  #     interval: 10s
-  #     timeout: 10s
-  #     retries: 10
-  #   environment:
-  #     - VIRTUAL_HOST=itsacloudynight.com,www.itsacloudynight.com,cloudyman.itsacloudynight.com
+  cloudyman:
+    container_name: cloudyman
+    image: chiefmikey/cloudyman:latest
+    depends_on:
+      the-myspace:
+        condition: service_healthy
+    networks:
+      - mikl-net
+    expose:
+      - "3002"
+    healthcheck:
+      test: node healthcheck.js
+      interval: 10s
+      timeout: 10s
+      retries: 10
+    environment:
+      - VIRTUAL_HOST=itsacloudynight.com,www.itsacloudynight.com,cloudyman.itsacloudynight.com
 
   name-generator_client:
     container_name: name-generator_client

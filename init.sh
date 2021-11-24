@@ -17,14 +17,14 @@ touch /home/ec2-user/$INSTANCE_ALREADY_STARTED
   sudo systemctl enable --now docker
   sudo chkconfig docker on
   sudo chmod 666 /var/run/docker.sock
-  docker compose -f /home/ec2-user/mikl.io/docker-compose.yaml pull
-  docker compose -f /home/ec2-user/mikl.io/docker-compose.yaml up -d
+  docker compose -f /home/ec2-user/docker-compose.yaml pull
+  docker compose -f /home/ec2-user/docker-compose.yaml up -d
 else
   echo "-- Not first instance startup --"
   sudo yum update -y
-  if [ "$(cat /home/ec2-user/mikl.io/stop.txt)" = stop ]; then
-    docker compose -f /home/ec2-user/mikl.io/docker-compose.yaml down --remove-orphans
+  if [ "$(cat /home/ec2-user/stop.txt)" = stop ]; then
+    docker compose -f /home/ec2-user/docker-compose.yaml down --remove-orphans
   fi
-  docker compose -f /home/ec2-user/mikl.io/docker-compose.yaml pull
-  docker compose -f /home/ec2-user/mikl.io/docker-compose.yaml up -d
+  docker compose -f /home/ec2-user/docker-compose.yaml pull
+  docker compose -f /home/ec2-user/docker-compose.yaml up -d
 fi
